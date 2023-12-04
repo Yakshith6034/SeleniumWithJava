@@ -1,4 +1,4 @@
-package PageObject;
+package com.pageobject;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -6,7 +6,6 @@ import java.util.NoSuchElementException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 public class addToCart
 
@@ -48,12 +47,6 @@ public class addToCart
 	public void CartList() {
 		ldriver.findElement(CarttItemList).click();
 	}
-	
-	
-	
-	
-	
-	
 
 	public void Empty()
 
@@ -84,15 +77,11 @@ public class addToCart
 		}
 
 	}
-	
-	
-	
-public void getAllButtonsAndStates() 
 
-{
+	public void getAllButtonsAndStates()
 
-	
-	
+	{
+
 //	try {
 //		Thread.sleep(1000);
 //	} catch (InterruptedException e) {
@@ -114,20 +103,8 @@ public void getAllButtonsAndStates()
 //	        String tooltipText = deleteButton.getAttribute("title");
 //	        System.out.println("Tooltip on hover: " + tooltipText);
 
-	
-	
-
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	//        java.util.List<WebElement> buttons = ldriver.findElements(By.xpath("/html/body/app-root/div/app-shoppingcart/div/mat-card/table/tbody/tr[1]/mat-card-content/td/button/span"));
+		// java.util.List<WebElement> buttons =
+		// ldriver.findElements(By.xpath("/html/body/app-root/div/app-shoppingcart/div/mat-card/table/tbody/tr[1]/mat-card-content/td/button/span"));
 //
 //        // Iterate through each button to determine its state
 //        for (WebElement button : buttons) {
@@ -137,7 +114,7 @@ public void getAllButtonsAndStates()
 //            } else {
 //                System.out.println("Button ID: " + buttonId + " - State: Disabled");
 //            }
-	
+
 //	List<WebElement> products = ldriver.findElements(By.xpath("/html/body/app-root/div/app-shoppingcart/div/mat-card/table/tbody/tr"));
 //
 //    // Create an Actions object
@@ -160,40 +137,33 @@ public void getAllButtonsAndStates()
 //        System.out.println("Displayed info on hover: " + tooltipText);
 //    }
 
-	
-	
-	// Find all products in the cart
-	List<WebElement> products1 = ldriver.findElements(By.xpath("/html/body/app-root/div/app-shoppingcart/div/mat-card/table/tbody/tr"));
+		// Find all products in the cart
+		List<WebElement> products1 = ldriver
+				.findElements(By.xpath("/html/body/app-root/div/app-shoppingcart/div/mat-card/table/tbody/tr"));
 
-	// Iterate through each product to get the delete button status
-	for (int i = 1; i <= products1.size(); i++) {
-	    WebElement product = ldriver.findElement(By.xpath("/html/body/app-root/div/app-shoppingcart/div/mat-card/table/tbody/tr[" + i + "]/mat-card-content/td/button/span"));
+		// Iterate through each product to get the delete button status
+		for (int i = 1; i <= products1.size(); i++) {
+			WebElement product = ldriver
+					.findElement(By.xpath("/html/body/app-root/div/app-shoppingcart/div/mat-card/table/tbody/tr[" + i
+							+ "]/mat-card-content/td/button/span"));
 
-	    if (product.isEnabled()) 
-	    {
-	        System.out.println("Product " + i + ": Delete button is enabled");
-	        
-	    } 
-	    
-	    else {
-	        System.out.println("Product " + i + ": Delete button is disabled");
-	    }
-	
-	    if (i == products1.size()) 
-	    {
-	        // Exit the loop when reaching the last product
-	        break;
-	    }
-	
-	
+			if (product.isEnabled()) {
+				System.out.println("Product " + i + ": Delete button is enabled");
+
+			}
+
+			else {
+				System.out.println("Product " + i + ": Delete button is disabled");
+			}
+
+			if (i == products1.size()) {
+				// Exit the loop when reaching the last product
+				break;
+			}
+
+		}
+
 	}
-
-        }
-	
-	
-	
-	
-	
 
 	public void removeItem() throws InterruptedException {
 
@@ -227,7 +197,6 @@ public void getAllButtonsAndStates()
 
 				break;
 
-		
 			}
 
 		}

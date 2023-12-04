@@ -1,4 +1,4 @@
-package StepDefinition;
+package com.stepdefinitions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,14 +9,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import PageObject.LoginPage;
-import PageObject.RegistrationPage;
-import PageObject.addToCart;
+import com.pageobject.LoginPage;
+import com.pageobject.RegistrationPage;
+import com.pageobject.addToCart;
+import com.utilities.EnvConfig;
+import com.utilities.RandomStringUtilites;
+import com.utilities.ScreenshotUtils;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import utilities.EnvConfig;
-import utilities.randomStringUtilites;
 
 public class Registration {
     WebDriver driver;
@@ -47,6 +49,8 @@ public class Registration {
         try {
             RegistrationPage RP = new RegistrationPage(driver);
             RP.Login();
+            ScreenshotUtils.takeScreenshot(driver, "login", "AfterLoginButtonClick");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,6 +61,8 @@ public class Registration {
         try {
             RegistrationPage RP = new RegistrationPage(driver);
             RP.RegisterButton();
+            ScreenshotUtils.takeScreenshot(driver, "login", "AfterClickONRegisterbutton");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,8 +72,10 @@ public class Registration {
     public void the_user_enters_the_first_name() {
         try {
             RegistrationPage RP = new RegistrationPage(driver);
-            String FirstName = randomStringUtilites.generateRandomString(10);
+            String FirstName = RandomStringUtilites.generateRandomString(10);
             RP.FirstName(FirstName);
+            ScreenshotUtils.takeScreenshot(driver, "login", "After EnterName");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -77,8 +85,10 @@ public class Registration {
     public void the_user_enters_the_last_name() {
         try {
             RegistrationPage RP = new RegistrationPage(driver);
-            String LastName = randomStringUtilites.generateRandomString(10);
+            String LastName = RandomStringUtilites.generateRandomString(10);
             RP.LastName(LastName);
+            ScreenshotUtils.takeScreenshot(driver, "login", "AfterLoginButtonClick");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,7 +98,7 @@ public class Registration {
     public void the_user_enters_the_user_name() {
         try {
             RegistrationPage RP = new RegistrationPage(driver);
-            name = randomStringUtilites.generateRandomString(10);
+            name = RandomStringUtilites.generateRandomString(10);
             RP.UserName(name);
             System.out.println(name);
         } catch (Exception e) {
@@ -160,7 +170,7 @@ public class Registration {
         }
     }
 
-    @Then("Appropriate Error message should be displayed")
+    @Then("Appropriate field validation messages should be displayed")
     public void error_message_should_be_displayed() {
         try {
             Thread.sleep(2000);
@@ -182,11 +192,11 @@ public class Registration {
         }
     }
 
-    @Then("user should see the error message for mandatory field")
+    @Then("the user should see validation messages indicating the required fields")
     public void UserShouldSeeErrorMessage() {
         try {
             RegistrationPage RP = new RegistrationPage(driver);
-            RP.ErrorMessages();
+            RP.FieldValidationMessages();
         } catch (Exception e) {
             e.printStackTrace();
         }

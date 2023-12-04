@@ -1,4 +1,4 @@
-package PageObject;
+package com.pageobject;
 
 import java.util.List;
 
@@ -61,6 +61,7 @@ public class PriceFilterPage {
 			// Remove non-numeric characters from the price text and convert to double
 			double priceValue = Double.parseDouble(productPriceText.replaceAll("[^0-9.]", ""));
 			String formattedOutput = String.format("%d. Product Name: %s%n   - Price: ₹%.2f", (i + 1), productName,
+				
 					priceValue);
 
 			// Print the formatted output

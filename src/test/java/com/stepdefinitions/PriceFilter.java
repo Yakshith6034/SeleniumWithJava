@@ -1,4 +1,4 @@
-package StepDefinition;
+package com.stepdefinitions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -8,13 +8,14 @@ import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import PageObject.LoginPage;
-import PageObject.PriceFilterPage;
+import com.pageobject.LoginPage;
+import com.pageobject.PriceFilterPage;
+import com.utilities.EnvConfig;
+import com.utilities.ExcelUtilites;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import utilities.EnvConfig;
-import utilities.ExcelUtilites;
 
 public class PriceFilter {
 	WebDriver driver;

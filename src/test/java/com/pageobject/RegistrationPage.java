@@ -1,11 +1,11 @@
-package PageObject;
+package com.pageobject;
 
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import utilities.randomStringUtilites;
+import com.utilities.RandomStringUtilites;
 
 public class RegistrationPage
 
@@ -46,91 +46,101 @@ public class RegistrationPage
 		ldriver.findElement(LastName).sendKeys(uname);
 
 	}
-	
-	
-	public void Login()
-	{
+
+	public void Login() {
 
 		ldriver.findElement(LoginButton).click();
 	}
 
-
-	public void Password(String Pass)
-	{
+	public void Password(String Pass) {
 
 		ldriver.findElement(Password).sendKeys(Pass);
 	}
 
-	public void ConfirmPassword(String ConfirmPass) 
-	{
+	public void ConfirmPassword(String ConfirmPass) {
 
 		ldriver.findElement(ConfirmPassword).sendKeys(ConfirmPass);
 	}
 
-	public void UserName(String uname) 
-	{
+	public void UserName(String uname) {
 
 		ldriver.findElement(UserName).sendKeys(uname);
 	}
 
-	public void Registration() 
-	{
+	public void Registration() {
 
 		ldriver.findElement(By.xpath("(//span[@class='mat-button-wrapper'])[8]")).click();
 	}
 
-	public void SubmitWithoutMandatorydeatials() 
-	{
+	public void SubmitWithoutMandatorydeatials() {
 
-		for (int i = 2; i <= 6; i++) 
-	    {
-	        // Construct the dynamic XPath for each input field and error message
-	        String inputXPath = String.format("//input[@id=\"mat-input-%d\"]", i);
+		for (int i = 2; i <= 6; i++) {
+			// Construct the dynamic XPath for each input field and error message
+			String inputXPath = String.format("//input[@id=\"mat-input-%d\"]", i);
 
-	        // Find and click on the input field
-	        WebElement inputField = ldriver.findElement(By.xpath(inputXPath));
-	        inputField.click();
+			// Find and click on the input field
+			WebElement inputField = ldriver.findElement(By.xpath(inputXPath));
+			inputField.click();
 
-	        // Find and get the text of the error message
-	        
-	    }
+			// Find and get the text of the error message
+
+		}
 
 	}
-	
-	public void ErrorMessages() 
-	{
 
-		String[] expectedErrorMessages = {
-	            "First Name is required",
-	            "Last Name is required",
-	            "User Name is required",
-	            "Password is required",
-	            
-	        };
+//	public void ErrorMessages() 
+//	{
+//
+//		String[] expectedErrorMessages = {
+//	            "First Name is required",
+//	            "Last Name is required",
+//	            "User Name is required",
+//	            "Password is required",
+//	            
+//	        };
+//
+//	        for (int i = 0; i <= 3; i++) {
+//	            // Construct the dynamic XPath for each error message
+//	            String errorXPath = String.format("//*[@id='mat-error-%d']", i);
+//
+//	            // Find and get the text of the error message
+//	            WebElement errorElement = ldriver.findElement(By.xpath(errorXPath));
+//	            String actualErrorMessage = errorElement.getText();
+//
+//	            // Compare actual error message with expected error message
+//	            if (actualErrorMessage.equals(expectedErrorMessages[i])) {
+//	                System.out.println("Validation Passed for Field " + i);
+//	            } else {
+//	                System.out.println("Validation Failed for Field " + i + ". Expected: " + expectedErrorMessages[i] + ", Actual: " + actualErrorMessage);
+//	            }
+//	        }
+//	}
 
-	        for (int i = 0; i <= 3; i++) {
-	            // Construct the dynamic XPath for each error message
-	            String errorXPath = String.format("//*[@id='mat-error-%d']", i);
+	public void FieldValidationMessages() {
+		String[] expectedErrorMessages = { "First Name is required", "Last Name is required", "User Name is required",
+				"Password is required," };
 
-	            // Find and get the text of the error message
-	            WebElement errorElement = ldriver.findElement(By.xpath(errorXPath));
-	            String actualErrorMessage = errorElement.getText();
+		String[] fieldNames = { "First Name", "Last Name", "User Name", "Password" };
 
-	            // Compare actual error message with expected error message
-	            if (actualErrorMessage.equals(expectedErrorMessages[i])) {
-	                System.out.println("Validation Passed for Field " + i);
-	            } else {
-	                System.out.println("Validation Failed for Field " + i + ". Expected: " + expectedErrorMessages[i] + ", Actual: " + actualErrorMessage);
-	            }
-	        }
+		for (int i = 0; i < expectedErrorMessages.length; i++) {
+			// Construct the dynamic XPath for each error message
+			String errorXPath = String.format("//*[@id='mat-error-%d']", i);
+
+			// Find and get the text of the error message
+			WebElement errorElement = ldriver.findElement(By.xpath(errorXPath));
+			String actualErrorMessage = errorElement.getText();
+
+			// Compare actual error message with expected error message
+			if (actualErrorMessage.equals(expectedErrorMessages[i])) {
+				System.out.println("Validation Passed for Field: " + fieldNames[i]);
+			} else {
+				System.out.println("Validation Failed for Field: " + fieldNames[i] + ". Expected: "
+						+ expectedErrorMessages[i] + ", Actual: " + actualErrorMessage);
+			}
+		}
 	}
-	
-	
-	
-	
-	
-	public void Gender() 
-	{
+
+	public void Gender() {
 
 		ldriver.findElement(Gender).click();
 	}
